@@ -1,0 +1,20 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /rest/coursesApp/1.0
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/coursesapp
+    username: testing
+    password: testing
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher

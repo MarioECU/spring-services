@@ -10,8 +10,8 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mc</groupId>
-	<artifactId>coursessystem</artifactId>
-	<version>1.0</version>
+	<artifactId>courses-system</artifactId>
+	<version>0.9</version>
 	<name>Courses Management</name>
 	<description>Courses Management</description>
 	<properties>

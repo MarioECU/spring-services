@@ -23,5 +23,5 @@ public class PostAppUser {
 	@NotNull
 	private AppUserRole role;
 	@NotNull
-	private AppUserStatus estado;
+	private AppUserStatus status;
 }

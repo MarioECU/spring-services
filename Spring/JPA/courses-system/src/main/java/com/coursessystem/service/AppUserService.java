@@ -44,7 +44,7 @@ public class AppUserService implements UserDetailsService {
         if (appUserRepository.existsByUsername(user.getUsername())) {
             throw new IllegalStateException(String.format(MSG_USER_ALREADY_REGISTERED, user.getUsername()));
         }
-        AppUser newUser = new AppUser(user.getName(), user.getSurname(), user.getUsername(), passwordEncoder.encode(user.getPassword()), user.getRole(), user.getEstado());
+        AppUser newUser = new AppUser(user.getName(), user.getSurname(), user.getUsername(), passwordEncoder.encode(user.getPassword()), user.getRole(), user.getStatus());
         return appUserRepository.saveAndFlush(newUser);
     }
 

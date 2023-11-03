@@ -26,7 +26,7 @@ public class SwaggerConfig {
 
 	ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Courses App")
-				.description("Courses Management").version("1.0")
+				.description("Courses Management").version("0.9")
 				.build();
 	}
 }

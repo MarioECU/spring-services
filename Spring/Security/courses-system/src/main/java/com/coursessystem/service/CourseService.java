@@ -45,7 +45,9 @@ public class CourseService {
 
     public Course update(Course course) throws EntityNotFoundException {
     	Long courseId = course.getId();
-    	courseRepository.findById(courseId).orElseThrow(() -> new EntityNotFoundException(String.format(MSG_UPDATING_NON_EXISTENT, courseId)));
+        Course c = courseRepository.findById(courseId).orElseThrow(() -> new EntityNotFoundException(String.format(MSG_UPDATING_NON_EXISTENT, courseId)));
+        course.setCreatedBy(c.getCreatedBy());
+        course.setCreatedAt(c.getCreatedAt());
     	course.setModifiedAt(LocalDateTime.now());
     	return courseRepository.saveAndFlush(course);
     }

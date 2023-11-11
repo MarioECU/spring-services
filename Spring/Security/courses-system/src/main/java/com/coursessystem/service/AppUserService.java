@@ -49,8 +49,10 @@ public class AppUserService implements UserDetailsService {
     }
 
     public AppUser update(AppUser user) throws EntityNotFoundException {
-		appUserRepository.findById(user.getId()).orElseThrow(() -> new EntityNotFoundException(String.format(MSG_UPDATING_NON_EXISTENT, user.getId())));
+		AppUser u = appUserRepository.findById(user.getId()).orElseThrow(() -> new EntityNotFoundException(String.format(MSG_UPDATING_NON_EXISTENT, user.getId())));
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setSubscriptions(u.getSubscriptions());
+		user.setCreatedAt(u.getCreatedAt());
 		user.setModifiedAt(LocalDateTime.now());
 		return appUserRepository.saveAndFlush(user);
     }

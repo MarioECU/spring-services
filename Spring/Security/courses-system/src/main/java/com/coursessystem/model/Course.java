@@ -49,7 +49,7 @@ public class Course {
 	public Course(String title, String description, AppUser creator) {
 		this.title = title;
 		this.description = description;
-		this.status = CourseStatus.EN_CONSTRUCCION;
+		this.status = CourseStatus.IN_PROGRESS;
 		this.createdBy = creator;
 		this.createdAt = LocalDateTime.now();
 	}

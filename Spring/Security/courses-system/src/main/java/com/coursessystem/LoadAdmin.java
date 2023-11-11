@@ -19,7 +19,7 @@ public class LoadAdmin implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		if (appUserService.loadUserByUsername("admin@admin.com") == null) {
-			appUserService.create(new PostAppUser("ADMIN", "ADMIN", "admin@admin.com", "sudo12345678", AppUserRole.ADMIN, AppUserStatus.ACTIVO));
+			appUserService.create(new PostAppUser("ADMIN", "ADMIN", "admin@admin.com", "sudo12345678", AppUserRole.ADMIN, AppUserStatus.ACTIVE));
 		}
 	}
 

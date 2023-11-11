@@ -103,7 +103,7 @@ public class AppUser implements UserDetails {
 	@Override
 	@ApiModelProperty(hidden = true)
 	public boolean isEnabled() {
-		return status == AppUserStatus.ACTIVO;
+		return status == AppUserStatus.ACTIVE;
 	}
 
 }

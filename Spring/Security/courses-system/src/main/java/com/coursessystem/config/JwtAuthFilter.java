@@ -51,7 +51,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 				}
 			}
 			filterChain.doFilter(request, response);
-		} catch (MalformedJwtException ex) {
+		} catch (MalformedJwtException | SignatureException ex) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 		}
 	}

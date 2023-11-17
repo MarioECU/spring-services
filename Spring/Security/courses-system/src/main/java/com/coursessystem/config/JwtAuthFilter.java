@@ -19,6 +19,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.coursessystem.service.AppUserService;
 
 import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import lombok.RequiredArgsConstructor;
 
 @Component
@@ -31,12 +32,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException, AuthenticationCredentialsNotFoundException {
-		final String jwtToken = request.getHeader("Authorization");
+		String jwtToken = request.getHeader("Authorization");
 		String username = "";
 		if (jwtToken == null) {
 			filterChain.doFilter(request, response);
 			return;
 		}
+		if (jwtToken.startsWith("Bearer "))
+			jwtToken = jwtToken.substring(7);
 		try {
 			username = jwtUtils.extractUsername(jwtToken);
 			if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

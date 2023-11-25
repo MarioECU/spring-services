@@ -32,6 +32,7 @@ public class WebSecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		return http.authorizeHttpRequests(auth -> {
 			auth.antMatchers("/login", "/v2/api-docs", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**").permitAll();
+			auth.antMatchers(HttpMethod.OPTIONS).permitAll();
 			auth.antMatchers(HttpMethod.GET, "/users").hasAnyAuthority("CREATOR", "ADMIN");
 			auth.antMatchers("/users").hasAnyAuthority("ADMIN");
 			auth.antMatchers("/courses/subscribe").hasAnyAuthority("CONSUMER", "ADMIN");

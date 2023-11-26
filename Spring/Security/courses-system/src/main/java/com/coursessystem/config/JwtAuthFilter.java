@@ -18,6 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.coursessystem.service.AppUserService;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +52,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 				}
 			}
 			filterChain.doFilter(request, response);
-		} catch (MalformedJwtException | SignatureException ex) {
+		} catch (MalformedJwtException | SignatureException | ExpiredJwtException ex) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 		}
 	}

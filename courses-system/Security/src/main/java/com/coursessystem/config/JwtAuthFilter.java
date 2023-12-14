@@ -54,6 +54,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 			filterChain.doFilter(request, response);
 		} catch (MalformedJwtException | SignatureException | ExpiredJwtException ex) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
+			//response.setHeader("X-Error-Message", ex.getMessage());
 		}
 	}
 
